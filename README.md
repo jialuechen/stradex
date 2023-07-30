@@ -1,5 +1,5 @@
 <div align="center">
-<img src="stradex-logo.png" width="55%">
+<img src="assets/stradex-logo.png" width="55%">
 </div>
 
 # Stradex : Strategy, Trade, Execution for Quants
