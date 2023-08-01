@@ -14,11 +14,10 @@ stradex_author = "jialuechen"
 stradex_author_email = "jialuechen@outlook.com"
 
 stradex_license = "MIT"
-stradex_keywords = ("quant", "trade", "System Trading", "backtester", "量化", "程序化交易", "量化交易", "系统交易")
+stradex_keywords = ("quant", "trade", "System Trading", "backtester")
 stradex_platforms = "Independant"
-stradex_url = "http://stradex.org/"
 
-stradex_description = "stradex Quant Framework for System Trading Analysis and backtester"
+stradex_description = "Stradex: An Event-driven Framework for Algorithmic  Trading Analysis and backtester"
 with open("README.rst", encoding='utf-8') as f:
     stradex_long_description = f.read()
 
@@ -88,14 +87,11 @@ setup(
             
             
             'Programming Language :: Python :: 3',
-            'Programming Language :: Python :: 3.5',
+            'Programming Language :: Python :: 3.11',
         ],
 
         install_requires=[
-            'matplotlib>=1.5.0',
-            
-            
-            
-            'pyecharts>=0.2.7',
+            'matplotlib>=3.7.0',
+            'pyecharts>=2.0.3',
         ],        
         )
