@@ -9,8 +9,8 @@ from .drawplot import (
 
 def _find_ema_coefficient(closes, emas, number=66, percent=0.95):
     
-    assert len(closes) == len(emas), "数据长度不等"
-    assert number >= 1, "Number必须大于0"
+    assert len(closes) == len(emas)
+    assert number >= 1
 
     tmp_closes = closes[-number:]
     tmp_emas = emas[-number:]
@@ -57,7 +57,6 @@ def _draw_ema_pipe(axes, kdata, ema, n=22, w=0.10):
 
 
 def draw(stock, query=Query(-130), ma_n=22, ma_w='auto', vigor_n=13):
-    """绘制亚历山大.艾尔德交易系统图形"""
     kdata = stock.get_kdata(query)
     close = CLOSE(kdata)
     ema = EMA(close, ma_n)

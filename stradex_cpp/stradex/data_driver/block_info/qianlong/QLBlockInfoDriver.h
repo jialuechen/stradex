@@ -1,6 +1,6 @@
 #pragma once
-#ifndef DATA_DRIVER_BLOCK_INFO_QIANLONG_QLBLOCKINFODRIVER_H_
-#define DATA_DRIVER_BLOCK_INFO_QIANLONG_QLBLOCKINFODRIVER_H_
+#ifndef DATA_DRIVER_BLOCK_INFO_stradex_QLBLOCKINFODRIVER_H_
+#define DATA_DRIVER_BLOCK_INFO_stradex_QLBLOCKINFODRIVER_H_
 
 #include "../../BlockInfoDriver.h"
 
@@ -8,7 +8,7 @@ namespace stradex {
 
 class QLBlockInfoDriver : public BlockInfoDriver {
 public:
-    QLBlockInfoDriver() : BlockInfoDriver("qianlong"){};
+    QLBlockInfoDriver() : BlockInfoDriver("stradex"){};
     virtual ~QLBlockInfoDriver();
 
     virtual bool _init() override;

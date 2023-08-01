@@ -3,7 +3,7 @@ import pathlib
 
 from .common_mysql import get_marketid
 
-def qianlong_import_weight(connect, src_dir, market):
+def stradex_import_weight(connect, src_dir, market):
     cur = connect.cursor()
 
     marketid = get_marketid(connect, market)

@@ -8,10 +8,8 @@ class TestStrategy(StrategyBase):
         self.stock_list = ['sh000001', 'sz000001']
         self.ktype_list = [Query.MIN, Query.DAY]
 
-    def init(self):
-        print("strategy init")
-
-    def on_bar(self, ktype):
+    @staticmethod
+    async def on_bar(self, ktype):
         print("on bar {}".format(ktype))
         print("{}".format(len(StockManager.instance())))
         sm = StockManager.instance()

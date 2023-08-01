@@ -12,29 +12,13 @@ class jqdataKDataDriver(KDataDriver):
     def clone(self):
         return jqdataKDataDriver()
 
-    def _init(self):
-       
-        self._max = {
-            Query.DAY: 10,
-            Query.WEEK: 2,
-            Query.MONTH: 1,
-            Query.QUARTER: 1,
-            Query.YEAR: 1,
-            Query.MIN: 25,
-            Query.MIN5: 25,
-            Query.MIN15: 25,
-            Query.MIN30: 25,
-            Query.MIN60: 25
-        }
-        return True
-
-    def isIndexFirst(self):
+    async def isIndexFirst(self):
         return False
 
-    def canParallelLoad(self):
+    async def canParallelLoad(self):
         return False
 
-    def getKRecordList(self, market, code, query):  # ktype, start_ix, end_ix, out_buffer):
+    async def getKRecordList(self, market, code, query):  # ktype, start_ix, end_ix, out_buffer):
         
         if query.query_type == Query.DATE:
             print("未实现按日期查询")
@@ -63,12 +47,12 @@ class jqdataKDataDriver(KDataDriver):
             result.append(record)
         return result
 
-    def getCount(self, market, code, ktype):
+    async def getCount(self, market, code, ktype):
         
         data = self._get_bars(market, code, ktype)
         return len(data)
 
-    def _getIndexRangeByDate(self, market, code, query):
+    async def _getIndexRangeByDate(self, market, code, query):
         
         print("getIndexRangeByDate")
 
@@ -135,7 +119,7 @@ class jqdataKDataDriver(KDataDriver):
 
         return (start_pos, end_pos)
 
-    def getKRecord(self, market, code, pos, ktype):
+    async def getKRecord(self, market, code, pos, ktype):
         
         record = KRecord()
         if pos < 0:
@@ -171,7 +155,7 @@ class jqdataKDataDriver(KDataDriver):
         }
         return ktype_map.get(ktype)
 
-    def _get_bars(self, market, code, ktype):
+    async def _get_bars(self, market, code, ktype):
         data = []
         username = self.getParam('username')
         password = self.getParam('password')

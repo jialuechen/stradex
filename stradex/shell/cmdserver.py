@@ -93,14 +93,7 @@ def set_server_logger_level(logger, level):
 
 
 def server(self, args):
-    """
-    start: 启动服务，无参数时，默认为start
-    stop: 停止服务
-    status: 查看当前服务器运行状态
-    set_logger_level: 设置 logger 级别 
-        logger(str): （可选）logger 名称
-        level(int): 打印级别
-    """
+    
     if args == "":
         start_server()
     x = args.split()

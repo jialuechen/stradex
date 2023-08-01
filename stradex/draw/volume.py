@@ -18,7 +18,6 @@ def draw(
     vma1_n=5,
     vma2_n=10
 ):
-    """绘制普通K线图 + 成交量（成交金额）"""
     kdata = stock.get_kdata(query)
     close = CLOSE(kdata, )
     ma1 = MA(close, ma1_n)

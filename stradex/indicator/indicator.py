@@ -2,12 +2,12 @@ from stradex.cpp.core import *
 from stradex import constant, toPriceList, Datetime
 
 
-def indicator_iter(indicator):
+async defindicator_iter(indicator):
     for i in range(len(indicator)):
         yield indicator[i]
 
 
-def indicator_getitem(data, i):
+async defindicator_getitem(data, i):
     """
     :param i: int | Datetime | slice | str 类型
     """
@@ -35,7 +35,7 @@ Indicator.__getitem__ = indicator_getitem
 Indicator.__iter__ = indicator_iter
 
 
-def PRICELIST(data, result_index=0, discard=0):
+async defPRICELIST(data, result_index=0, discard=0):
     import stradex.cpp.core as ind
     if isinstance(data, ind.Indicator):
         return ind.PRICELIST(data, result_index)
@@ -49,11 +49,11 @@ try:
     import numpy as np
     import pandas as pd
 
-    def indicator_to_np(indicator):
+    async defindicator_to_np(indicator):
         """转化为np.array，如果indicator存在多个值，只返回第一个"""
         return np.array(indicator, dtype='d')
 
-    def indicator_to_df(indicator):
+    async defindicator_to_df(indicator):
         """转化为pandas.DataFrame"""
         if indicator.get_result_num() == 1:
             return pd.DataFrame(indicator_to_np(indicator), columns=[indicator.name])
