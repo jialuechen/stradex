@@ -53,8 +53,7 @@ setup(
 
         license = stradex_license,
         keywords = stradex_keywords,
-        platforms = stradex_platforms,
-        url = stradex_url,
+        platforms = stradex_platforms,,
 
         packages = find_packages(),
         zip_safe = False,
