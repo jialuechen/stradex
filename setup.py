@@ -18,7 +18,7 @@ stradex_keywords = ("quant", "trade", "System Trading", "backtester")
 stradex_platforms = "Independant"
 
 stradex_description = "Stradex: An Event-driven Framework for Algorithmic  Trading Analysis and backtester"
-with open("README.rst", encoding='utf-8') as f:
+with open("README.md", encoding='utf-8') as f:
     stradex_long_description = f.read()
 
 if sys.platform == 'win32':
