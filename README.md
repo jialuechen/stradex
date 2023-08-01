@@ -2,7 +2,7 @@
 <img src="assets/stradex-logo.png" width="55%">
 </div>
 
-# Stradex: <font color="gold">Opti</font>mized <font color="gold">S</font>trategies, <font color="gold">Trad</font>ing and e<font color="gold">X</font>ecution in one package
+# Stradex: <font color="gold">S</font>trategies, <font color="gold">Trad</font>ing and e<font color="gold">X</font>ecution in one package
 
 Stradex is an asynchronous event-driven algorithmic trading framework built in Python (with C++ acceleration components). It is created to support live trading based on Interactive Brokers TWS API.
 
