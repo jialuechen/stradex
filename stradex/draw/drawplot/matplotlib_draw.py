@@ -127,33 +127,7 @@ def getMinLocatorAndFormatter(dates):
     return month_loc, month_fm
 
 
-def ax_set_locator_formatter(axes, dates, typ):
-    major_loc, major_fm = None, None
-    if typ == Query.DAY:
-        major_loc, major_fm = getDayLocatorAndFormatter(dates)
-    elif typ == Query.WEEK:
-        major_loc, major_fm = getDayLocatorAndFormatter(dates)
-    elif typ == Query.MONTH:
-        major_loc, major_fm = getDayLocatorAndFormatter(dates)
-    elif typ == Query.QUARTER:
-        major_loc, major_fm = getDayLocatorAndFormatter(dates)
-    elif typ == Query.HALFYEAR:
-        major_loc, major_fm = getDayLocatorAndFormatter(dates)
-    elif typ == Query.YEAR:
-        major_loc, major_fm = getDayLocatorAndFormatter(dates)
-    else:
-        major_loc, major_fm = getMinLocatorAndFormatter(dates)
-
-    axes.xaxis.set_major_locator(major_loc)
-    axes.xaxis.set_major_formatter(major_fm)
-
-
 def adjust_axes_show(axeslist):
-    """用于调整上下紧密相连的坐标轴显示时，其上一坐标轴最小值刻度和下一坐标轴最大值刻度
-    显示重叠的问题。
-    
-    :param axeslist: 上下相连的坐标轴列表 (ax1,ax2,...)
-    """
     for ax in axeslist[:-1]:
         for label in ax.get_xticklabels():
             label.set_visible(False)
@@ -162,14 +136,7 @@ def adjust_axes_show(axeslist):
 
 
 def kplot(kdata, new=True, axes=None, colorup='r', colordown='g'):
-    """绘制K线图
-    
-    :param KData kdata: K线数据
-    :param bool new:    是否在新窗口中显示，只在没有指定axes时生效
-    :param axes:        指定的坐标轴
-    :param colorup:     the color of the rectangle where close >= open
-    :param colordown:   the color of the rectangle where close < open
-    """
+
     if not kdata:
         print("kdata is None")
         return
@@ -248,15 +215,6 @@ def kplot(kdata, new=True, axes=None, colorup='r', colordown='g'):
 
 
 def mkplot(kdata, new=True, axes=None, colorup='r', colordown='g', ticksize=3):
-    """绘制美式K线图
-    
-    :param KData kdata: K线数据
-    :param bool new:    是否在新窗口中显示，只在没有指定axes时生效
-    :param axes:        指定的坐标轴
-    :param colorup:     the color of the lines where close >= open
-    :param colordown:   the color of the lines where close < open
-    :param ticksize:    open/close tick marker in points
-    """
     if not kdata:
         print("kdata is None")
         return
@@ -328,22 +286,6 @@ def iplot(
     *args,
     **kwargs
 ):
-    """绘制indicator曲线
-    
-    :param Indicator indicator: indicator实例
-    :param axes:            指定的坐标轴
-    :param new:             是否在新窗口中显示，只在没有指定axes时生效
-    :param kref:            参考的K线数据，以便绘制日期X坐标
-    :param legend_on:       是否打开图例
-    :param text_on:         是否在左上角显示指标名称及其参数
-    :param text_color:      指标名称解释文字的颜色，默认为黑色
-    :param zero_on:         是否需要在y=0轴上绘制一条直线
-    :param str label:       label显示文字信息，text_on 及 legend_on 为 True 时生效
-    :param args:            pylab plot参数
-    :param kwargs:          pylab plot参数，如：marker（标记类型）、
-                             markerfacecolor（标记颜色）、
-                             markeredgecolor（标记的边缘颜色）
-    """
     if not indicator:
         print("indicator is None")
         return
@@ -452,14 +394,7 @@ def ibar(
 
 
 def ax_draw_macd(axes, kdata, n1=12, n2=26, n3=9):
-    """绘制MACD
     
-    :param axes: 指定的坐标轴
-    :param KData kdata: KData
-    :param int n1: 指标 MACD 的参数1
-    :param int n2: 指标 MACD 的参数2
-    :param int n3: 指标 MACD 的参数3
-    """
     macd = MACD(CLOSE(kdata), n1, n2, n3)
     bmacd, fmacd, smacd = macd.get_result(0), macd.get_result(1), macd.get_result(2)
 
@@ -494,18 +429,6 @@ def ax_draw_macd(axes, kdata, n1=12, n2=26, n3=9):
 
 
 def ax_draw_macd2(axes, ref, kdata, n1=12, n2=26, n3=9):
-    """绘制MACD。
-    当BAR值变化与参考序列ref变化不一致时，显示为灰色，
-    当BAR和参考序列ref同时上涨，显示红色
-    当BAR和参考序列ref同时下跌，显示绿色
-
-    :param axes: 指定的坐标轴
-    :param ref: 参考序列，EMA
-    :param KData kdata: KData
-    :param int n1: 指标 MACD 的参数1
-    :param int n2: 指标 MACD 的参数2
-    :param int n3: 指标 MACD 的参数3
-    """
     macd = MACD(CLOSE(kdata), n1, n2, n3)
     bmacd, fmacd, smacd = macd.get_result(0), macd.get_result(1), macd.get_result(2)
 
@@ -551,16 +474,7 @@ def ax_draw_macd2(axes, ref, kdata, n1=12, n2=26, n3=9):
 
 
 def sgplot(sg, new=True, axes=None, style=1, kdata=None):
-    """绘制买入/卖出信号
-
-    :param SignalBase sg: 信号指示器
-    :param new: 仅在未指定axes的情况下生效，当为True时，创建新的窗口对象并在其中进行绘制
-    :param axes: 指定在那个轴对象中进行绘制
-    :param style: 1 | 2 信号箭头绘制样式
-    :param KData kdata: 指定的KData（即信号发生器的交易对象），
-                       如该值为None，则认为该信号发生器已经指定了交易对象，
-                       否则，使用该参数作为交易对象
-    """
+    
     kdata = sg.to if kdata is None else kdata
     refdates = kdata.get_datetime_list()
     date_index = dict([(d, i) for i, d in enumerate(refdates)])
@@ -611,46 +525,9 @@ def sgplot(sg, new=True, axes=None, style=1, kdata=None):
         )
 
 
-def cnplot(cn, new=True, axes=None, kdata=None):
-    """绘制系统有效条件
-
-    :param ConditionBase cn: 系统有效条件
-    :param new: 仅在未指定axes的情况下生效，当为True时，创建新的窗口对象并在其中进行绘制
-    :param axes: 指定在那个轴对象中进行绘制
-    :param KData kdata: 指定的KData，如该值为None，则认为该系统有效条件已经
-                        指定了交易对象，否则，使用该参数作为交易对象
-    """
-    if kdata is None:
-        kdata = cn.to
-    else:
-        cn.to = kdata
-
-    refdates = kdata.get_datetime_list()
-    date_index = dict([(d, i) for i, d in enumerate(refdates)])
-
-    if axes is None:
-        if new:
-            axes = create_figure()
-            kplot(kdata, axes=axes)
-        else:
-            axes = gca()
-
-    x = np.array([i for i in range(len(refdates))])
-    y1 = np.array([1 if cn.isValid(d) else -1 for d in refdates])
-    y2 = np.array([-1 if cn.isValid(d) else 1 for d in refdates])
-    axes.fill_between(x, y1, y2, where=y2 > y1, facecolor='blue', alpha=0.6)
-    axes.fill_between(x, y1, y2, where=y2 < y1, facecolor='red', alpha=0.6)
 
 
 def sysplot(sys, new=True, axes=None, style=1):
-    """绘制系统实际买入/卖出信号
-    
-    :param SystemBase sys: 系统实例
-    :param new:   仅在未指定axes的情况下生效，当为True时，
-                   创建新的窗口对象并在其中进行绘制
-    :param axes:  指定在那个轴对象中进行绘制
-    :param style: 1 | 2 信号箭头绘制样式
-    """
     kdata = sys.to
 
     refdates = kdata.get_datetime_list()
