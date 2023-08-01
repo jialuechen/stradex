@@ -88,7 +88,7 @@ install:
   - cd
 
 script:
-  - cd ./build/fasiondog/stradex
+  - cd ./build/jialuechen/stradex
   - export BOOST_ROOT=./boost_1_71_0
   - export BOOST_LIB=./boost_1_71_0/stage/lib
   - ls .

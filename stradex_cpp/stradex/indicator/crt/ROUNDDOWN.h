@@ -1,0 +1,29 @@
+
+
+#pragma once
+#ifndef INDICATOR_CRT_ROUNDDOWN_H_
+#define INDICATOR_CRT_ROUNDDOWN_H_
+
+#include "CVAL.h"
+
+namespace stradex {
+
+/**
+ * 向上截取，如10.1截取后为11
+ * @ingroup Indicator
+ */
+Indicator stradex_API ROUNDDOWN(int ndigits = 2);
+Indicator ROUNDDOWN(price_t, int ndigits = 2);
+Indicator ROUNDDOWN(const Indicator& ind, int ndigits = 2);
+
+inline Indicator ROUNDDOWN(const Indicator& ind, int n) {
+    return ROUNDDOWN(n)(ind);
+}
+
+inline Indicator ROUNDDOWN(price_t val, int n) {
+    return ROUNDDOWN(CVAL(val), n);
+}
+
+}  // namespace stradex
+
+#endif

@@ -1,0 +1,25 @@
+
+
+#pragma once
+#ifndef INDICATOR_CRT_ADVANCE_H_
+#define INDICATOR_CRT_ADVANCE_H_
+
+#include "../Indicator.h"
+#include "../../StockTypeInfo.h"
+
+namespace stradex {
+
+/**
+ * 上涨家数。当存在指定上下文且 ignore_context 为 false 时，将忽略 query, market, stk_type 参数。
+ * @param query 查询条件
+ * @param market 所属市场，等于 "" 时，获取所有市场
+ * @param stk_type 证券类型, 大于 constant.STOCKTYPE_TMP 时，获取所有类型证券
+ * @param ignore_context 是否忽略上下文。忽略时，强制使用 query, market, stk_type 参数。
+ * @ingroup Indicator
+ */
+Indicator stradex_API ADVANCE(const KQuery& query = KQueryByIndex(-100), const string& market = "SH",
+                          int stk_type = STOCKTYPE_A, bool ignore_context = false);
+
+}  // namespace stradex
+
+#endif
