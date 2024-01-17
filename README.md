@@ -2,11 +2,11 @@
 <img src="assets/stradex-logo.png" width="55%">
 </div>
 
-# Stradex: Strategies, Trading and Execution in one library
+# StradeX: Strategies, Trading and Execution in one library
 
-Stradex is an asynchronous event-driven algorithmic trading framework built in Python (with C++ acceleration components). It is created to support live trading based on Interactive Brokers TWS API.
+StradeX is an asynchronous event-driven algorithmic trading framework built in Python (with C++ acceleration components). It is created to support live trading based on Interactive Brokers TWS API.
 
-Stradex intergrates support for creating trading strategies, backtesting, market impact / slippage modeling as well as risk management through built-in algorithm controls.
+StradeX intergrates support for creating trading strategies, backtesting, market impact / slippage modeling as well as risk management through built-in algorithm controls.
 
 ## Installation
 ```
@@ -25,4 +25,4 @@ pip install --upgrade stradex
 + TA-Lib
 
 ## License
-stradex is licensed under MIT.
+StradeX is licensed under MIT.
